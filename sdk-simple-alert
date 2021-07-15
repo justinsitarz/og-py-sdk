@@ -1,0 +1,18 @@
+import opsgenie_sdk
+
+api_key = "<API Key>"
+conf = opsgenie_sdk.configuration.Configuration()
+conf.api_key['Authorization'] = api_key
+api_client = opsgenie_sdk.api_client.ApiClient(configuration=conf)
+alert_api = opsgenie_sdk.AlertApi(api_client=api_client)
+body = opsgenie_sdk.CreateAlertPayload(
+    message='Debugging..... message!',
+    description='Debugging... description',
+    responders=[{'name': 'internal', 'type': 'team'}],
+    visible_to=[{'name': 'internal', 'type': 'team'}],
+    actions=None,
+    tags=None,
+    details=None,
+    entity=None,
+    priority='P2')
+res = alert_api.create_alert(create_alert_payload=body)
