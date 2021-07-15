@@ -1,7 +1,7 @@
 # Importing relevant Opsgenie SDK libraries including the Alert API client
 import opsgenie_sdk
 
-class Alert:
+class OpsgenieClient:
 	def __init__(self):
 		self.conf = self.conf = opsgenie_sdk.configuration.Configuration()
 		self.conf.api_key['Authorization'] = '<YOUR_API_KEY_HERE'
@@ -37,5 +37,5 @@ class Alert:
 		except opsgenie_sdk.ApiException as err:
 			print("Exception when calling AlertApi->create_alert: %s\n" % err)
 
-alert = Alert()
+alert = OpsgenieClient()
 alert.create()
